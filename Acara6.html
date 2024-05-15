@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Geospasial_Mashup</title>
+        <style>#map {width:100%; height:700px}</style>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    </head>
+
+    <body>
+        <div id="map" style="width:100%; height:700px"></div>
+       <script>
+        var map = L.map('map').setView([-7.766476346890457, 110.37746389073669], 15);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker = L.marker([-7.766476346890457, 110.37746389073669]).addTo(map);
+
+        var circle = L.circle([-7.766476346890457, 110.37746389073669], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 200
+        }).addTo(map);
+
+        var polygon = L.polygon([
+            [-7.764950094459934, 110.37563952534788],
+            [-7.774392091620527, 110.3714298997196],             
+            [-7.778517169347026, 110.38817588298582],
+            [-7.769671119577893, 110.39044260447673],
+            [-7.764950094459934, 110.37563952534788]
+        ]).addTo(map);
+
+        marker.bindPopup("<b>Hello Geografer!</b><br>This is Faculty Geography.").openPopup();
+        circle.bindPopup("Paseduluran Luntur Sitik");
+        polygon.bindPopup("Universitas Gudang Man2");
+       </script>
+    </body>
+</html>
